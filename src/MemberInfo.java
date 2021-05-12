@@ -1,8 +1,8 @@
 public class MemberInfo
 {
-    private String name;
-    private int gradYear;
-    private boolean hasGoodStanding;
+    private final String name;
+    private final int gradYear;
+    private final boolean hasGoodStanding;
 
     public MemberInfo(String name, int gradYear, boolean hasGoodStanding)
     {
@@ -10,6 +10,10 @@ public class MemberInfo
         this.gradYear = gradYear;
         this.hasGoodStanding = hasGoodStanding;
     }
+
+    public int getGraduationYear() {return gradYear;}
+
+    public boolean getHasGoodStanding() { return hasGoodStanding;}
 
     @Override
     public String toString()
