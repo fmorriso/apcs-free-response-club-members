@@ -5,8 +5,24 @@ public class ClubMembersDriver
 
     public static void main(String[] args)
     {
+        System.out.println("Part A:");
         ClubMembers club = partA();
         System.out.println(club);
+
+        System.out.println("Part B:");
+        partB(club);
+
+    }
+
+    private static void partB(ClubMembers club)
+    {
+
+        ArrayList<MemberInfo> grads = club.removeMembers(2018);
+        System.out.println("Graduates:");
+        System.out.println(grads);
+        System.out.println("After remove:");
+        System.out.println(club);
+
     }
 
     private static ClubMembers partA()
