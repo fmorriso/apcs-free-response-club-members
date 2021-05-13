@@ -1,8 +1,8 @@
 public class MemberInfo
 {
-    private final String name;
-    private final int gradYear;
-    private final boolean hasGoodStanding;
+    private String name;
+    private int gradYear;
+    private boolean hasGoodStanding;
 
     public MemberInfo(String name, int gradYear, boolean hasGoodStanding)
     {
@@ -23,5 +23,15 @@ public class MemberInfo
                 ", gradYear=" + gradYear +
                 ", hasGoodStanding=" + hasGoodStanding +
                 '}';
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setHasGoodStanding(boolean hasGoodStanding)
+    {
+        this.hasGoodStanding = hasGoodStanding;
     }
 }
