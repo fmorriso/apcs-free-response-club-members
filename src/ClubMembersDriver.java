@@ -28,17 +28,20 @@ public class ClubMembersDriver
     private static ClubMembers partA()
     {
         ClubMembers club = new ClubMembers();
-
-        String[] memberNames = {"SMITH JANE"};
+        String name = "SMITH, JANE";
+        String[] memberNames = {name}; // false
         club.addMembers(memberNames, 2019);
+        club.setHasGoodStanding(name, false);
 
-        memberNames = new String[] {"FOX, STEVE"};
+        memberNames = new String[] {"FOX, STEVE"}; // true
         club.addMembers(memberNames, 2018);
 
-        memberNames = new String[] {"XIN, MICHAEL"};
+        name = "XIN, MICHAEL";
+        memberNames = new String[] {name}; // false
         club.addMembers(memberNames, 2017);
+        club.setHasGoodStanding(name, false);
 
-        memberNames = new String[] {"GARCIA, MARIA"};
+        memberNames = new String[] {"GARCIA, MARIA"}; // true
         club.addMembers(memberNames, 2020);
 
         return club;

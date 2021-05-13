@@ -38,7 +38,7 @@ public class ClubMembers
         ArrayList<MemberInfo> grads = new ArrayList<MemberInfo>();
         for(MemberInfo mi: memberInfoArrayList)
         {
-            if(mi.getGraduationYear() == year && mi.getHasGoodStanding())
+            if(mi.getGraduationYear() <= year && mi.getHasGoodStanding())
                 grads.add(mi);
         }
 
@@ -52,7 +52,7 @@ public class ClubMembers
         }
 
         // use that list of people to remove to remove them from the club list
-        for(MemberInfo mi: remove) memberInfoArrayList.remove(mi);            
+        for(MemberInfo mi: remove) memberInfoArrayList.remove(mi);
 
         return grads;
     }
@@ -65,5 +65,22 @@ public class ClubMembers
             val += member + "\n";
         }
         return val;
+    }
+
+    public void setHasGoodStanding(String name, boolean hasGoodStanding)
+    {
+        MemberInfo found = null;
+        for(int i = 0; i < memberInfoArrayList.size(); i++)
+        {
+            if(memberInfoArrayList.get(i).getName().equals(name))
+            {
+                MemberInfo mi = memberInfoArrayList.get(i);
+                mi.setHasGoodStanding(false);
+                memberInfoArrayList.set(i, mi);
+            }
+
+        }
+
+
     }
 }
