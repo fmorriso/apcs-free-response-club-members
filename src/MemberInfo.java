@@ -11,9 +11,9 @@ public class MemberInfo
         this.hasGoodStanding = hasGoodStanding;
     }
 
-    public int getGraduationYear() {return gradYear;}
+    public int getGradYear() {return gradYear;}
 
-    public boolean getHasGoodStanding() { return hasGoodStanding;}
+    public boolean inGoodStanding() { return hasGoodStanding;}
 
     @Override
     public String toString()
