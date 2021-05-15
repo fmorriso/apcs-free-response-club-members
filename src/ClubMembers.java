@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class ClubMembers
 {
-    private ArrayList<MemberInfo> memberInfoArrayList;
+    private ArrayList<MemberInfo> memberList;
 
     public ClubMembers()
     {
-        memberInfoArrayList = new ArrayList<MemberInfo>();
+        memberList = new ArrayList<MemberInfo>();
     }
 
     /**
@@ -18,7 +18,7 @@ public class ClubMembers
     {
         for (String name: names)
         {
-            memberInfoArrayList.add( new MemberInfo(name, gradYear, true));
+            memberList.add( new MemberInfo(name, gradYear, true));
         }
     }
 
@@ -36,23 +36,22 @@ public class ClubMembers
     {
         // create a list of graduates
         ArrayList<MemberInfo> grads = new ArrayList<MemberInfo>();
-        for(MemberInfo mi: memberInfoArrayList)
-        {
-            if(mi.getGraduationYear() <= year && mi.getHasGoodStanding())
-                grads.add(mi);
-        }
-
-        // remove all members who have a graduation year less than or equal to specified year
-
-        // start by making a separate list of the people that need to be removed
+        // create a separate list of members to be removed
         ArrayList<MemberInfo> remove = new ArrayList<MemberInfo>();
-        for(MemberInfo mi: memberInfoArrayList)
+        for(MemberInfo mi: memberList)
         {
-            if(mi.getGraduationYear() <= year) remove.add(mi);
+            if(mi.getGradYear() <= year)
+            {
+                remove.add(mi);
+                if(mi.inGoodStanding())
+                {
+                    grads.add(mi);
+                }
+            }
         }
 
-        // use that list of people to remove to remove them from the club list
-        for(MemberInfo mi: remove) memberInfoArrayList.remove(mi);
+       // use separate list of people to remove to remove them from the club list
+        for(MemberInfo mi: remove) memberList.remove(mi);
 
         return grads;
     }
@@ -60,7 +59,7 @@ public class ClubMembers
     public String toString()
     {
         String val = "";
-        for (MemberInfo member: memberInfoArrayList)
+        for (MemberInfo member: memberList)
         {
             val += member + "\n";
         }
@@ -70,13 +69,13 @@ public class ClubMembers
     public void setHasGoodStanding(String name, boolean hasGoodStanding)
     {
         MemberInfo found = null;
-        for(int i = 0; i < memberInfoArrayList.size(); i++)
+        for(int i = 0; i < memberList.size(); i++)
         {
-            if(memberInfoArrayList.get(i).getName().equals(name))
+            if(memberList.get(i).getName().equals(name))
             {
-                MemberInfo mi = memberInfoArrayList.get(i);
+                MemberInfo mi = memberList.get(i);
                 mi.setHasGoodStanding(false);
-                memberInfoArrayList.set(i, mi);
+                memberList.set(i, mi);
             }
 
         }
